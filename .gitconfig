@@ -3,3 +3,6 @@
   br = branch
   ci = commit
   st = status
+[user]
+  name = Joe Sak
+  email = joe@joesak.com
