@@ -8,3 +8,8 @@
   email = joe@joesak.com
 [core]
 	editor = vim
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
