@@ -6,3 +6,5 @@
 [user]
   name = Joe Sak
   email = joe@joesak.com
+[core]
+	editor = vim
