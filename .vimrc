@@ -1,5 +1,6 @@
 let g:CommandTMaxFiles=80085
 call pathogen#infect()
+set directory=/tmp
 
 " Add all directories under $DOTFILES/vim/vendor as runtime paths, so plugins,
 " docs, colors, and other runtime files are loaded.
