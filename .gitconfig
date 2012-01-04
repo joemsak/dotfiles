@@ -7,9 +7,9 @@
   name = Joe Sak
   email = joe@joesak.com
 [core]
-	editor = vim
+  editor = vim
 [color]
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
