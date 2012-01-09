@@ -116,6 +116,7 @@ cmap %/ <C-r>=expand('%:p:h')<CR>/
 map <Leader>x :silent . w ! sh > ~/.vim_cmd.out<CR>:new ~/.vim_cmd.out<CR>
 
 noremap <C-t> :CommandT<CR>
+noremap <C-T> :CommandTFlush<CR>
 
 " Character mapping
 cnoremap <C-a> <Home>
