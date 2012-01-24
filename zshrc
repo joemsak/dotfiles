@@ -43,9 +43,4 @@ else
   export TERM='xterm-color'
 fi
 
-zshtart () {
-  source ~/.zshrc
-  cd ~/code
-}
-
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
