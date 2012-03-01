@@ -36,6 +36,7 @@ export MANPATH=/opt/local/share/man:$MANPATH
 
 alias r='rails'
 alias mate='vim'
+alias be='bundle exec '
 
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
   export TERM='xterm-256color'
