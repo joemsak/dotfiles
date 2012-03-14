@@ -1,3 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/Users/joe/code/cxense/.git'
+let g:netrw_dirhist_2='/Users/joemsak/code/oxbow/spec'
+let g:netrw_dirhist_3='/Users/joemsak/code/oxbow/spec_no_rails'
+let g:netrw_dirhist_4='/Users/joemsak/code/oxbow'
+let g:netrw_dirhist_5='/Users/joemsak/code/oxbow/spec_no_rails/models'
+let g:netrw_dirhist_6='/Users/joemsak/code/oxbow/app/models'
