@@ -123,6 +123,7 @@ map <Leader>P :set nopaste<cr>
 cmap %/ <C-r>=expand('%:p:h')<CR>/
 " execute current line as shell command, and open output in new window
 map <Leader>x :silent . w ! sh > ~/.vim_cmd.out<CR>:new ~/.vim_cmd.out<CR>
+map ,t :w\|!script/test %<cr>
 
 noremap <C-t> :CommandTFlush<CR>:CommandT<CR>
 
@@ -229,3 +230,4 @@ function! ConfigureForMMH()
 endfunction
 com! Mmh call ConfigureForMMH()
 
+set shell=/bin/sh
