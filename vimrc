@@ -223,6 +223,7 @@ let g:netrw_altv=1
 
 au BufRead,BufNewFile *.scss set filetype=scss
 au BufRead,BufNewFile Guardfile set filetype=ruby
+autocmd BufNewFile,BufRead *.json set ft=javascript
 
 " Projects *******************************************************************
 function! ConfigureForMMH()
