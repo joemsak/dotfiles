@@ -3,6 +3,11 @@
   br = branch
   ci = commit
   st = status
+
+  l = "!source ~/.githelpers && pretty_git_log"
+  la = !git l --all
+  r = !git r --all
+  ra = !git r --all
 [user]
   name = Joe Sak
   email = joe@joesak.com
