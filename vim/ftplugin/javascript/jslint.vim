@@ -63,12 +63,10 @@ else
   let s:runjslint_ext = 'js'
   if exists("$JS_CMD")
     let s:cmd = "$JS_CMD"
-  elseif executable('node')
-    let s:cmd = 'node'
-  elseif executable('nodejs')
-    let s:cmd = 'nodejs'
   elseif executable('/System/Library/Frameworks/JavaScriptCore.framework/Resources/jsc')
     let s:cmd = '/System/Library/Frameworks/JavaScriptCore.framework/Resources/jsc'
+  elseif executable('node')
+    let s:cmd = 'node'
   elseif executable('js')
     let s:cmd = 'js'
   else
@@ -79,27 +77,15 @@ let s:plugin_path = s:install_dir . "/jslint/"
 if has('win32')
   let s:plugin_path = substitute(s:plugin_path, '/', '\', 'g')
 endif
-let s:cmd = 'cd "' . s:plugin_path . '" && ' . s:cmd . ' "' . s:plugin_path . 'runjslint.' . s:runjslint_ext . '"'
+let s:cmd = "cd " . s:plugin_path . " && " . s:cmd . " " . s:plugin_path . "runjslint." . s:runjslint_ext
 
-let s:jslintrc_file = expand('~/.jslintrc')
-if filereadable(s:jslintrc_file)
-  let s:jslintrc = readfile(s:jslintrc_file)
+let s:jshintrc_file = expand('~/.jshintrc')
+if filereadable(s:jshintrc_file)
+  let s:jshintrc = readfile(s:jshintrc_file)
 else
-  let s:jslintrc = []
+  let s:jshintrc = []
 end
 
-" load .jslintrc file from the current (pwd) directory if exists
-let s:localrc_file = fnamemodify(".", ":p") . '/.jslintrc'
-if filereadable(s:localrc_file)
-    let s:localrc = readfile(s:localrc_file)
-    let s:jslintrc = s:jslintrc + s:localrc
-endif
-" load .jslintrc file from the directory where the file is if exists
-let s:file_dir_file = expand('%:p:h') . '/.jslintrc'
-if filereadable(s:file_dir_file)
-    let s:filedir_rc = readfile(s:file_dir_file)
-    let s:jslintrc = s:jslintrc + s:filedir_rc
-endif
 
 " WideMsg() prints [long] message up to (&columns-1) length
 " guaranteed without "Press Enter" prompt.
@@ -161,61 +147,45 @@ function! s:JSLint()
   let b:qf_list = []
   let b:qf_window_count = -1
 
-  let lines = join(s:jslintrc + getline(b:firstline, b:lastline), "\n")
+  let lines = join(s:jshintrc + getline(b:firstline, b:lastline), "\n")
   if len(lines) == 0
     return
   endif
-  if has('win32') || has('win64')
-    let b:jslint_output = system(s:cmd, lines . "\n")
-  else
-    let old_shell = &shell
-    let &shell = '/bin/bash'
-    let b:jslint_output = system(s:cmd, lines . "\n")
-    let &shell = old_shell
-  endif
+  let b:jslint_output = system(s:cmd, lines . "\n")
   if v:shell_error
-    echoerr b:jslint_output
     echoerr 'could not invoke JSLint!'
     let b:jslint_disabled = 1
   end
 
   for error in split(b:jslint_output, "\n")
     " Match {line}:{char}:{message}
-    let b:parts = matchlist(error, '\v(\d+):(\d+):([A-Z]+):(.*)')
+    let b:parts = matchlist(error, '\v(\d+):(\d+):(.*)')
     if !empty(b:parts)
-      let l:line = b:parts[1] + (b:firstline - 1 - len(s:jslintrc)) " Get line relative to selection
-      let l:errorMessage = b:parts[4]
+      let l:line = b:parts[1] + (b:firstline - 1 - len(s:jshintrc)) " Get line relative to selection
+      let l:errorMessage = b:parts[3]
 
-      if l:line < 1
-        echoerr 'error in jslintrc, line ' . b:parts[1] . ', character ' . b:parts[2] . ': ' . l:errorMessage
-      else
-        " Store the error for an error under the cursor
-        let s:matchDict = {}
-        let s:matchDict['lineNum'] = l:line
-        let s:matchDict['message'] = l:errorMessage
-        let b:matchedlines[l:line] = s:matchDict
-        if b:parts[3] == 'ERROR'
-            let l:errorType = 'E'
-        else
-            let l:errorType = 'W'
-        endif
-        if g:JSLintHighlightErrorLine == 1
-          let s:mID = matchadd('JSLintError', '\v%' . l:line . 'l\S.*(\S|$)')
-        endif
-        " Add line to match list
-        call add(b:matched, s:matchDict)
-
-        " Store the error for the quickfix window
-        let l:qf_item = {}
-        let l:qf_item.bufnr = bufnr('%')
-        let l:qf_item.filename = expand('%')
-        let l:qf_item.lnum = l:line
-        let l:qf_item.text = l:errorMessage
-        let l:qf_item.type = l:errorType
-
-        " Add line to quickfix list
-        call add(b:qf_list, l:qf_item)
+      " Store the error for an error under the cursor
+      let s:matchDict = {}
+      let s:matchDict['lineNum'] = l:line
+      let s:matchDict['message'] = l:errorMessage
+      let b:matchedlines[l:line] = s:matchDict
+      let l:errorType = 'W'
+      if g:JSLintHighlightErrorLine == 1
+        let s:mID = matchadd('JSLintError', '\v%' . l:line . 'l\S.*(\S|$)')
       endif
+      " Add line to match list
+      call add(b:matched, s:matchDict)
+
+      " Store the error for the quickfix window
+      let l:qf_item = {}
+      let l:qf_item.bufnr = bufnr('%')
+      let l:qf_item.filename = expand('%')
+      let l:qf_item.lnum = l:line
+      let l:qf_item.text = l:errorMessage
+      let l:qf_item.type = l:errorType
+
+      " Add line to quickfix list
+      call add(b:qf_list, l:qf_item)
     endif
   endfor
 
