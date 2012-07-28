@@ -39,6 +39,7 @@ alias mate='vim'
 alias guard='bundle exec guard'
 alias lr='LOAD_RAILS=1'
 alias spnr='rspec spec_no_rails'
+alias vim='~/Applications/MacVim.app/Contents/MacOS/vim'
 
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
   export TERM='xterm-256color'
@@ -53,3 +54,8 @@ export RUBY_HEAP_FREE_MIN=500000
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+. `brew --prefix`/etc/profile.d/z.sh
+function precmd () {
+  z --add "$(pwd -P)"
+}
