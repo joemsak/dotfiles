@@ -126,6 +126,7 @@ map <Leader>P :set nopaste<cr>
 cmap %/ <C-r>=expand('%:p:h')<CR>/
 " execute current line as shell command, and open output in new window
 map <Leader>x :silent . w ! sh > ~/.vim_cmd.out<CR>:new ~/.vim_cmd.out<CR>
+map <Leader>cw ggiEliminate trailing whitespace<CR><ESC>:x<CR>
 
 noremap <C-t> :CommandTFlush<CR>:CommandT<CR>
 set wildignore+=tmp/**
