@@ -120,6 +120,9 @@ map <Leader>p :set paste<cr>i
 " <Leader>P -- :set nopaste
 map <Leader>P :set nopaste<cr>
 
+" <Leader>h -- add _no_rails_ to require spec_helper
+map <Leader>h gg^f_ano_rails_<esc>j:w<cr>
+
 " Key sequence mappings
 " In command-mode, typing %/ will replace those chars with the directory of
 " the file in the current buffer
