@@ -1,4 +1,4 @@
-*rails.txt*	Plugin for working with Ruby on Rails applications
+tex*rails.txt*	Plugin for working with Ruby on Rails applications
 
 Author: Tim Pope <vimNOSPAM@tpope.org>		|rails-plugin-author|
 
