@@ -36,9 +36,6 @@ export MANPATH=/opt/local/share/man:$MANPATH
 
 alias r='rails'
 alias mate='vim'
-alias guard='bundle exec guard'
-alias lr='LOAD_RAILS=1'
-alias spnr='rspec spec_no_rails'
 alias vim='~/Applications/MacVim.app/Contents/MacOS/vim'
 
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
