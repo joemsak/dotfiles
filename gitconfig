@@ -18,3 +18,9 @@
   diff = auto
   interactive = auto
   status = auto
+[merge]
+  tool = opendiff
+[branch "master"]
+ rebase = true
+[branch]
+  autosetuprebase = always
