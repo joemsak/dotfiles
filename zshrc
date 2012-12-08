@@ -51,8 +51,3 @@ export RUBY_HEAP_FREE_MIN=500000
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-. `brew --prefix`/etc/profile.d/z.sh
-function precmd () {
-  z --add "$(pwd -P)"
-}
