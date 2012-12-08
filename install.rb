@@ -2,12 +2,18 @@
 
 # from http://errtheblog.com/posts/89-huba-huba
 
-home = File.expand_path('~')
+def home
+  File.expand_path('~')
+end
+
+def create_symlink(file)
+  target = File.join(home, ".#{file}")
+  `ln -is #{File.expand_path file} #{target}`
+end
 
 Dir['*'].each do |file|
   next if file =~ /install/
-  target = File.join(home, ".#{file}")
-  `ln -s #{File.expand_path file} #{target}`
+  create_symlink(file)
 end
 
 # git push on commit
