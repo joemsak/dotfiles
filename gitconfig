@@ -21,6 +21,6 @@
 [merge]
   tool = opendiff
 [branch "master"]
- rebase = true
+  rebase = true
 [branch]
   autosetuprebase = always
