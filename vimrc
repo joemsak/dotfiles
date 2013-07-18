@@ -113,7 +113,7 @@ map <Leader>v :sp $DOTFILES/vimrc<CR>
 map <silent> <Leader>V :source $HOME/.vimrc<CR>:if has("gui")<CR>:source $HOME/.gvimrc<CR>:endif<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " ctrl+x -- clear whitespace in a file, commit
-map <C-x> :%s/\s\+$//g<cr>:w<cr>:!git ci %<cr>
+map <C-x> :%s/\s\+$//g<cr>:w<cr>:!git ci % -m "Elminate trailing whitespace"<cr>
 
 " <Leader>p -- :set paste
 map <Leader>p :set paste<cr>i
