@@ -39,6 +39,7 @@ alias mate='vim'
 alias vim='~/Applications/MacVim.app/Contents/MacOS/vim'
 alias gpgp='git pull && git push'
 alias gptags='git push && git push --tags'
+alias git='xcrun git'
 
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
   export TERM='xterm-256color'
