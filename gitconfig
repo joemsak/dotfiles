@@ -24,3 +24,5 @@
   rebase = true
 [branch]
   autosetuprebase = always
+[mergetool]
+	keepBackup = false
