@@ -220,7 +220,7 @@ function! RunTestFile(...)
     " Run the tests for the previously-marked file.
     let in_spec_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
     let in_test_file = match(expand("%"), '\(.feature\|_test.rb\)$') != -1
-    if in_test_file || in_test_file
+    if in_test_file || in_spec_file
         call SetTestFile()
     elseif !exists("t:grb_test_file")
         return
