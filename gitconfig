@@ -25,4 +25,4 @@
 [branch]
   autosetuprebase = always
 [mergetool]
-	keepBackup = false
+  keepBackup = false
