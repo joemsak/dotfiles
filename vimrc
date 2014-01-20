@@ -115,9 +115,7 @@ map <silent> <Leader>V :source $HOME/.vimrc<CR>:if has("gui")<CR>:source $HOME/.
 " ctrl+x -- clear whitespace in a file, commit
 map <C-x> :%s/\s\+$//g<cr>:w<cr>:!git ci % -m "Elminate trailing whitespace"<cr>
 
-" <Leader>p -- :set paste
-map <Leader>p :set paste<cr>i
-" <Leader>P -- :set nopaste
+map <Leader>p :set paste<cr>o
 map <Leader>P :set nopaste<cr>
 
 " <Leader>h -- add _no_rails_ to require spec_helper
