@@ -26,3 +26,5 @@
   autosetuprebase = always
 [mergetool]
   keepBackup = false
+[push]
+	default = simple
