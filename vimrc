@@ -117,9 +117,7 @@ map <C-x> :%s/\s\+$//g<cr>:w<cr>:!git ci % -m "Elminate trailing whitespace"<cr>
 
 map <Leader>p :set paste<cr>o
 map <Leader>P :set nopaste<cr>
-
-" <Leader>h -- add _no_rails_ to require spec_helper
-map <Leader>h gg^f_ano_rails_<esc>j:w<cr>
+map <Leader>h :noh<cr>
 
 " Key sequence mappings
 " In command-mode, typing %/ will replace those chars with the directory of
