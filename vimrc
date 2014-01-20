@@ -130,6 +130,7 @@ map <Leader>cw ggiEliminate trailing whitespace<CR><ESC>:x<CR>
 noremap <C-t> :CommandTFlush<CR>:CommandT<CR>
 set wildignore+=tmp/**
 set wildignore+=log/**
+set wildignore+=node_modules/**
 
 " Character mapping
 cnoremap <C-a> <Home>
