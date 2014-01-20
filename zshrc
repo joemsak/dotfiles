@@ -29,7 +29,7 @@ plugins=(git rvm brew rails3 rails osx ruby)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/Users/joe/.rvm/gems/ruby-1.9.3-p0@neoteric_development/bin:/Users/joe/.rvm/gems/ruby-1.9.3-p0@global/bin:/Users/joe/.rvm/rubies/ruby-1.9.3-p0/bin:/Users/joe/.rvm/bin:/Users/joe/.homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/X11/bin:$PATH
+export PATH=/Users/joe/.rvm/gems/ruby-1.9.3-p0@neoteric_development/bin:/Users/joe/.rvm/gems/ruby-1.9.3-p0@global/bin:/Users/joe/.rvm/rubies/ruby-1.9.3-p0/bin:/Users/joe/.rvm/bin:/Users/joe/.homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/X11/bin:/Users/joemsak/bin:$PATH
 export PATH="/Users/joe/Applications:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/joe/.homebrew/bin:$PATH"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
