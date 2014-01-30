@@ -24,7 +24,7 @@ DISABLE_LS_COLORS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rvm brew rails rails osx ruby)
+plugins=(git rvm brew rails osx ruby)
 
 source $ZSH/oh-my-zsh.sh
 
