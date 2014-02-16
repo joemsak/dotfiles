@@ -32,6 +32,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=/Users/joe/.rvm/gems/ruby-1.9.3-p0@neoteric_development/bin:/Users/joe/.rvm/gems/ruby-1.9.3-p0@global/bin:/Users/joe/.rvm/rubies/ruby-1.9.3-p0/bin:/Users/joe/.rvm/bin:/Users/joe/.homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/X11/bin:/Users/joemsak/bin:$PATH
 export PATH="/Users/joe/Applications:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/Users/joe/.homebrew/bin:$PATH"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export DOTFILES=$HOME/code/dotfiles
 export MANPATH=/opt/local/share/man:$MANPATH
 
 alias r='rails'
@@ -48,6 +49,7 @@ else
   export TERM='xterm-color'
 fi
 export RUBY_HEAP_MIN_SLOTS=1000000
+export RUBY_GC_HEAP_INIT_SLOTS=1000000
 export RUBY_HEAP_SLOTS_INCREMENT=1000000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 export RUBY_GC_MALLOC_LIMIT=1000000000
