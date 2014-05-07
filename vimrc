@@ -236,7 +236,7 @@ map <leader>c :w\|:!script/features<cr>
 map <leader>w :w\|:!script/features --profile wip<cr>
 
 " Sessions ********************************************************************
-set sessionoptions=blank,buffers,curdir,folds,help,options,resize,tabpages,winpos,winsize,globals
+set sessionoptions=blank,buffers,curdir,help,options,resize,tabpages,winpos,winsize,globals
 
 function! AutosaveSessionOn(session_file_path)
   augroup AutosaveSession
@@ -298,18 +298,6 @@ endfunction
 autocmd BufRead *.markdown map <Leader>p :call PreviewMKD()<CR>
 autocmd BufRead *.markdown call WordWrap("on")
 autocmd BufRead *.markdown set spell
-
-" Folding *********************************************************************
-function! EnableFolding()
-  set foldcolumn=2
-  set foldenable
-endfunction
-function! DisableFolding()
-  set foldcolumn=0
-  set nofoldenable
-endfunction
-set foldmethod=syntax
-call DisableFolding()
 
 " Netrw
 let g:netrw_liststyle=3
