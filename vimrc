@@ -193,6 +193,8 @@ function! RunTests(filename)
           else
             exec ":!bundle exec rspec --color " . a:filename
           end
+        elseif match(a:filename, '_tests') != -1
+            exec ":!nosetests --rednose " . a:filename
         elseif match(a:filename, '_test') != -1
             exec ":!lein difftest " . a:filename
         else
@@ -216,7 +218,8 @@ function! RunTestFile(...)
     " Run the tests for the previously-marked file.
     let in_spec_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
     let in_test_file = match(expand("%"), '\(.feature\|_test.\(?:rb\|clj\)\)$') != -1
-    if in_test_file || in_spec_file
+    let in_py_file   = match(expand("%"), '\(.feature\|_tests.py\)$') != -1
+    if in_test_file || in_spec_file || in_py_file
         call SetTestFile()
     elseif !exists("t:jms_test_file")
         return
