@@ -220,8 +220,6 @@ function! RunTestFile(...)
     " Run the tests for the previously-marked file.
     let in_spec_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
     let in_test_file = match(expand("%"), '\(.feature\|_test.\(?:rb\|clj|java\)\)$') != -1
-    if in_test_file || in_spec_file
-    let in_test_file = match(expand("%"), '\(.feature\|_test.\(?:rb\|clj\)\)$') != -1
     let in_py_file   = match(expand("%"), '\(.feature\|_tests.py\)$') != -1
     if in_test_file || in_spec_file || in_py_file
         call SetTestFile()
