@@ -1,3 +1,9 @@
+:set colorcolumn=+1        " highlight column after 'textwidth'
+:set colorcolumn=+1,+2,+3  " highlight three columns after 'textwidth'
+:highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+
+:set colorcolumn = 80
+
 let mapleader=","
 let g:CommandTMaxFiles=80085
 call pathogen#infect()
@@ -175,7 +181,11 @@ endfunction
 " Run Tests ******************************************************************
 function! RunTests(filename)
     " Write the file and run tests for the given filename
-    :wa
+     if filereadable(@%)
+       :wa
+     else
+       :w
+     endif
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
