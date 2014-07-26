@@ -1,8 +1,5 @@
-:set colorcolumn=+1        " highlight column after 'textwidth'
-:set colorcolumn=+1,+2,+3  " highlight three columns after 'textwidth'
-:highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
-
-:set colorcolumn = 80
+:set colorcolumn=80
+highlight ColorColumn ctermbg=7
 
 let mapleader=","
 let g:CommandTMaxFiles=80085
