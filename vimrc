@@ -175,7 +175,7 @@ endfunction
 " Run Tests ******************************************************************
 function! RunTests(filename)
     " Write the file and run tests for the given filename
-    :w
+    :wa
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
