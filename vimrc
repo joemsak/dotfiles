@@ -87,8 +87,9 @@ if has("autocmd")
   autocmd FileType text setlocal textwidth=78
   " For all ruby files, set 'shiftwidth' and 'tabspace' to 2 and expand tabs
   " to spaces.
-  autocmd FileType ruby,eruby set sw=2 ts=2 et
+  autocmd FileType ruby,eruby,html set sw=2 ts=2 et
   autocmd FileType python set sw=4 ts=4 et
+  autocmd FileType go set sw=4 ts=4 sts=4 noet
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
@@ -195,10 +196,12 @@ function! RunTests(filename)
         if filereadable("script/test")
             exec ":!script/test " . a:filename
         elseif filereadable("Gemfile")
-          if match(a:filename, '_test') != -1
+          if match(a:filename, '_test.rb') != -1
             exec ":!bundle exec rake test " . a:filename
-          else
+          elseif match(a:filename, '_spec.rb') != -1
             exec ":!bundle exec rspec --color " . a:filename
+          elseif match(a:filename, '_spec.js') != -1
+            exec ":!bundle exec rake konacha:run SPEC=" . a:filename
           end
         elseif match(a:filename, '_tests') != -1
             exec ":!nosetests --rednose " . a:filename
@@ -228,7 +231,8 @@ function! RunTestFile(...)
     let in_spec_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
     let in_test_file = match(expand("%"), '\(.feature\|_test.\(?:rb\|clj|java\)\)$') != -1
     let in_py_file   = match(expand("%"), '\(.feature\|_tests.py\)$') != -1
-    if in_test_file || in_spec_file || in_py_file
+    let in_js_file   = match(expand("%"), '\(.feature\|_spec.js\)') != -1
+    if in_test_file || in_spec_file || in_py_file || in_js_file
         call SetTestFile()
     elseif !exists("t:jms_test_file")
         return
@@ -299,7 +303,7 @@ au ColorScheme * exec hiExtraWhiteSpace
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
 set list
-" set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ 
 
 " Markdown *******************************************************************
 function! PreviewMKD()

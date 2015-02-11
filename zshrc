@@ -37,7 +37,6 @@ export MANPATH=/opt/local/share/man:$MANPATH
 
 alias r='rails'
 alias mate='vim'
-alias vim='~/Applications/MacVim.app/Contents/MacOS/vim'
 alias gpgp='git pull && git push'
 alias gptags='git push && git push --tags'
 alias git='xcrun git'
