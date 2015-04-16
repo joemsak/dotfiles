@@ -336,4 +336,5 @@ function! ConfigureForMMH()
 endfunction
 com! Mmh call ConfigureForMMH()
 
+set iskeyword-=_
 set shell=/bin/sh
