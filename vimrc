@@ -1,8 +1,8 @@
-:set colorcolumn=80
-highlight ColorColumn ctermbg=7
+:set colorcolumn=90
 
 let mapleader=","
 let g:CommandTMaxFiles=80085
+let g:jsx_ext_required = 0
 call pathogen#infect()
 set directory=/tmp
 
@@ -231,8 +231,9 @@ function! RunTestFile(...)
     let in_spec_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
     let in_test_file = match(expand("%"), '\(.feature\|_test.\(?:rb\|clj|java\)\)$') != -1
     let in_py_file   = match(expand("%"), '\(.feature\|_tests.py\)$') != -1
-    let in_js_file   = match(expand("%"), '\(.feature\|_spec.js\)') != -1
-    if in_test_file || in_spec_file || in_py_file || in_js_file
+    let in_js_file   = match(expand("%"), '\(.feature\|_spec.js\)$') != -1
+    let in_coffee_file = match(expand("%"), '\(.feature\|Spec.coffee\)$') != -1
+    if in_test_file || in_spec_file || in_py_file || in_js_file || in_coffee_file
         call SetTestFile()
     elseif !exists("t:jms_test_file")
         return
